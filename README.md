@@ -4,11 +4,11 @@
 ### 1 Overview
 The Short Reads circRNA Pipeline (SRCP) is made for identification of circRNAs when the length
 of the reads is relatively small (say <75bp)
-In such short reads the regular PCP pipeline identifies much less circle reads the SRCP.
+In such short reads the other pipelines identify much less circle reads the SRCP.
 
 ### 2 Parameters
 -circ (also –c or -C) – A file containing a list of circles locations in bed6 format.
--annotation (also –a or -A) – An annotation in REAL bed format
+-annotation (also –a or -A) – An annotation in bed.12 format
 <chr><locA><locB><name><reads><strand><cdsStart><cdEnd><numExons><exon starts><exon ends>
 -data (also –d or -dat) – the dataset file names separated by commas (explicitly in the shell)
 Example: -d <file1>,<file2>,...<fileN>
@@ -40,6 +40,6 @@ DEFAULT = maximal edit distance + 1
 --version (also –v) – Show the version and about.
 
 ### 4 Remarks
-The final output file containing the: num unique circ reads, num circ reads,num linear reads left, num unique left linear reads, num right linear reads, num unique right linear reads ratios.
+The final output file containing the: number of unique circ reads, number of circ reads,number of linear reads left, num unique left linear reads, number of right linear reads, number of unique right linear reads ratios.
 <output filename>_allSample.txt
 The script creates a lot of other intermediate files. The circ and leftLinear and rightLinear circles with the junction are also output where the script was initiated. Other files are in the tmp/ directory.
