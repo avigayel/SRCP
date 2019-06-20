@@ -1424,8 +1424,7 @@ if __name__ == '__main__':
         formatter_class=RawDescriptionHelpFormatter)
     parser.add_argument("-circ", "-ci", "-c", help="The circles locations file in BED6 format.", required=True)
     parser.add_argument("-annotation", "-an", "-a", help="The annotation for the species."
-                                                         " BED12 format excluding the color column."
-                                                         "Over-all 11 columns.",
+                                                         " BED12 format excluding the color column.",
                         required=True)
     parser.add_argument("-read_len", "-len", "-l", help="Minimum length of the read. To use only if dataset contains "
                                                         "reads of different length. DEFAULT=None", required=False, default=None,
