@@ -6,6 +6,13 @@ The Short Reads circRNA Pipeline (SRCP) is made for identification of circRNAs w
 of the reads is relatively small (say <75bp)
 In such short reads the other pipelines identify much less circle reads the SRCP.
 
+The script needs these versions:
+
+python2.7
+bowtie2 version: 2.3.4.1
+bedtools v2.26.0
+
+
 ### 2 Parameters
 -circ (also –c or -C) – A file containing a list of circles locations in bed6 format.
 -annotation (also –a or -A) – An annotation in bed.12 format
