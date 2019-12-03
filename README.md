@@ -9,7 +9,9 @@ In such short reads the other pipelines identify much less circle reads the SRCP
 The script needs these versions:
 
 python2.7
+
 bowtie2 version: 2.3.4.1
+
 bedtools v2.26.0
 
 
