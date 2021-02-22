@@ -718,7 +718,7 @@ def run_circular(samp):
     exons = [exon.strip('\t').split('\t') for exon in exons]
     seqs = [seqs[i] for i in xrange(1, len(seqs), 2)]
     junction = [seqs[i][-half:]+seqs[i][:half] for i in range(len(seqs))]
-    for i in range(len(exons)):
+    for i in range(min(len(exons), len(junction))): #avigayel - change to the minimum instead of just the length of exons.
         #avigayel add ';'+exons[i][STRAND]
         index[exons[i][GENE_NAME]+';'+exons[i][CHR]+':'+exons[i][LOCA]+'-'+exons[i][LOCB]+';'+exons[i][STRAND]] = junction[i]
         #avigayel add  ';'+exons[i][STRAND]
@@ -746,17 +746,17 @@ def run_circular(samp):
               awk '{print "@"$1"\\n"$10"\\n+\\n"$11}' > tmp/__res__.fq''')
     print
     print "Aligning to genome..."
-    print "bowtie2 -x "+args.system +  " " + params + " -U tmp/__res__.fq |" + "samtools view -S - > tmp/__aligned_genome__"+samp+".sam\n"
+    print "bowtie2 --very-sensitive -x "+args.system +  " " + params + " -U tmp/__res__.fq |" + "samtools view -S - > tmp/__aligned_genome__"+samp+".sam\n"
     # Align to genome
-    os.system("bowtie2 -x "+args.system +
+    os.system("bowtie2 --very-sensitive  -x "+args.system +
               " " + params + " -U tmp/__res__.fq |"
               "samtools view -S - > tmp/__aligned_genome__"+samp+".sam")
 
     print
     print "Aligning to transcriptome..."
-    print "bowtie2 -x " + args.transcriptome + " " + params + " -U tmp/__res__.fq |" + "samtools view -S - > tmp/__aligned_transcriptome__"+samp+".sam\n"          
+    print "bowtie2 --very-sensitive -x " + args.transcriptome + " " + params + " -U tmp/__res__.fq |" + "samtools view -S - > tmp/__aligned_transcriptome__"+samp+".sam\n"          
     # Align to transcriptome:
-    os.system("bowtie2 -x " + args.transcriptome +
+    os.system("bowtie2 --very-sensitive -x " + args.transcriptome +
               " " + params + " -U tmp/__res__.fq |"
               "samtools view -S - > tmp/__aligned_transcriptome__"+samp+".sam")
 
@@ -1424,7 +1424,8 @@ if __name__ == '__main__':
         formatter_class=RawDescriptionHelpFormatter)
     parser.add_argument("-circ", "-ci", "-c", help="The circles locations file in BED6 format.", required=True)
     parser.add_argument("-annotation", "-an", "-a", help="The annotation for the species."
-                                                         " BED12 format excluding the color column.",
+                                                         " BED12 format excluding the color column."
+                                                         "Over-all 11 columns.",
                         required=True)
     parser.add_argument("-read_len", "-len", "-l", help="Minimum length of the read. To use only if dataset contains "
                                                         "reads of different length. DEFAULT=None", required=False, default=None,
