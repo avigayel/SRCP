@@ -1,10 +1,12 @@
 # SRCP
 ## Short Read CircRNA Pipeline
 
+SRCP is open-source under an MIT license and publicly available on Github and Zenodo.
+
 ### 1 Overview
 The Short Reads circRNA Pipeline (SRCP) is made for identification of circRNAs when the length
 of the reads is relatively small (say <75bp)
-In such short reads the other pipelines identify much less circle reads the SRCP.
+In such short reads the other pipelines identify much less circle reads than SRCP.
 
 The script needs these versions:
 
